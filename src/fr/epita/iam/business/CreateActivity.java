@@ -2,6 +2,7 @@ package fr.epita.iam.business;
 
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -58,9 +59,16 @@ public class CreateActivity extends Activity{
 	
 		//persist the identity somewhere
 		System.out.println("this is the identity you created\n"+identity);
-		IdentityDAO identityDAO = new IdentityDAO();
-		identityDAO.create(identity);
-		System.out.println("creation Done");
+		IdentityDAO identityDAO;
+		try {
+			identityDAO = new IdentityDAO();
+			identityDAO.create(identity);
+			System.out.println("creation Done");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 }

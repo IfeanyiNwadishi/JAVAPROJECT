@@ -2,6 +2,7 @@ package fr.epita.iam.business;
 
 
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 import fr.epita.iam.datamodel.Identity;
@@ -20,7 +21,13 @@ public class DeleteActivity extends Activity {
 	 */
 	public static void execute(Scanner scanner){
 		System.out.println("Identity Deleting");
-		IdentityDAO identityDAO = new IdentityDAO();
+		IdentityDAO identityDAO = null;
+		try {
+			identityDAO = new IdentityDAO();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		List<Identity> identities = identityDAO.readAll();
 		
 		System.out.println("Select an identity id");

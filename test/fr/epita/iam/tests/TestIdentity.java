@@ -33,7 +33,13 @@ public class TestIdentity {
 	private static void testIdentityDAO(){
 		
 		// create an instance
-		IdentityDAO identityDAO = new IdentityDAO();
+		IdentityDAO identityDAO = null;
+		try {
+			identityDAO = new IdentityDAO();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	
 		try {
 			// clear table identities

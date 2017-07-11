@@ -1,13 +1,14 @@
 package fr.epita.iam.services;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -26,8 +27,8 @@ public class IdentityDAO implements DAO<Identity> {
 	/**
 	 * 
 	 */
-	public IdentityDAO(){
-		connection = Connector.getConnection();
+	public IdentityDAO() throws SQLException{
+		connection = DriverManager.getConnection("jdbc:derby://localhost:1527/sample;create=true","IAMCORE","123");
 	}
 
 	/* (non-Javadoc)

@@ -1,6 +1,7 @@
 package fr.epita.iam.business;
 
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -39,7 +40,13 @@ public class UpdateActivity extends Activity{
 	 */
 	public static void execute(Scanner scanner){
 		System.out.println("Identity Update");
-		IdentityDAO identityDAO = new IdentityDAO();
+		IdentityDAO identityDAO = null;
+		try {
+			identityDAO = new IdentityDAO();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		List<Identity> identities = identityDAO.readAll();
 		System.out.println("Select an identity id");
 		for(Identity i : identities){

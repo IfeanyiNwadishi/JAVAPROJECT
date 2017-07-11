@@ -1,6 +1,10 @@
 
 -- Create a table to store predefined types of an attribute
 
+CREATE SCHEMA IAMCORE;
+
+SET SCHEMA IAMCORE;
+
 create table attribute_type(
 	id int not null generated always as identity
 	constraint attribute_pk primary key,
